@@ -35,13 +35,65 @@ p {
   padding: 0px;
 }
 
-.intro {
+.block-section {
   width: 100%;
   height: 100vh;
   position: relative;
   overflow: hidden;
-  background: #4711aa;
+}
+
+.intro {
+  background-color: #4711aa;
   display: block;
+}
+
+.section-2 {
+  background-color: red;
+}
+
+.section-3 {
+  background-color: green;
+}
+
+.section-4 {
+  background-color: yellow;
+}
+
+/*------------------------------------*  #MAIN HEADER
+\*------------------------------------*/
+
+.main-header {
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  width: 100%;
+  min-height: 55px;
+  height: auto;
+  padding: 7px 2%;
+  background-color: #282828;
+  z-index: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.main-header__title {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  color: rgba(245, 245, 245, 0.8);
+  letter-spacing: 1.5px;
+  font-weight: 400;
 }
 
 /*------------------------------------*  #SVG

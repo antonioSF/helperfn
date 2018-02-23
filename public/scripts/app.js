@@ -60,11 +60,89 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(1);
+module.exports = __webpack_require__(5);
+
+
+/***/ }),
+/* 1 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_animejs__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_animejs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_animejs__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_morphingSVG__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_scrollNavigation__ = __webpack_require__(10);
+
+
+
+
+/**
+ * check if is mobile device based on media queries
+ */
+var isMobile = function isMobile() {
+  return window.matchMedia("(max-width: 64rem)").matches;
+};
+
+if (!isMobile()) {}
+//do something for desktop
+
+
+/**
+ * Main Navigation scroll animation
+ * see ./core/scrollNavigation.js for details
+ */
+var navLinks = document.querySelectorAll('.nav-link');
+Object(__WEBPACK_IMPORTED_MODULE_2__core_scrollNavigation__["a" /* default */])(navLinks);
+
+/**
+ * SVG Animation
+ * see ./core/morphingSVG.js for details
+ */
+var svgClip = document.getElementById('js-svg-clip');
+Object(__WEBPACK_IMPORTED_MODULE_1__core_morphingSVG__["a" /* default */])(svgClip);
+
+/***/ }),
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_animejs__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_animejs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_animejs__);
+
+
+/**
+ * Animate SVG path
+ * based on Anime.js ref: http://animejs.com/documentation/#morphing
+ */
+var morphingSVG = function morphingSVG(svgPath) {
+  var svgClip = document.getElementById('js-svg-clip');
+
+  /*
+   * TODO: grab the values from the other shapes in illustrator
+   * and replace string values
+   */
+  __WEBPACK_IMPORTED_MODULE_0_animejs___default()({
+    targets: svgPath,
+    duration: 10000,
+    easing: [0.5, 0, 0.5, 1],
+    d: [{ value: 'M 1041,450.4 C 1023,547.7 992.8,667.7 905.7,714.5 793.1,775 639,728.7 524.5,671.8 453.3,636.4 382.2,575.4 360.2,499 329.7,393 344.6,249.2 426,174.9 568.6,44.66 851.1,-8.71 1002,111.8 1091,182.7 1061,338.6 1041,450.4 Z' }, { value: 'M 1066,436 C 1051,543.8 976.5,664.5 873.6,700.1 761,739.1 636.4,655.8 529.5,603.1 441.6,559.8 325.8,520.1 293.8,427.5 263.1,338.4 294.5,213.4 368.2,154.8 520.7,33.48 790.1,23.76 952.4,131.7 1043,191.7 1081,328.8 1066,436 Z' }, { value: 'M 1066,436 C 1053,531.1 930.7,580.1 842.2,617.2 734,662.7 598.4,707.8 492.4,657.4 427.6,626.6 387.5,546.9 376.7,476 360.3,368.3 376.9,227.9 462.5,160.5 567.6,77.69 749.9,37.5 863.8,148.8 947.6,230.7 1082,320.1 1066,436 Z' }],
+    loop: true
+  });
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (morphingSVG);
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -103,34 +181,10 @@ n)k=l;else{var l=h,h=h+.1,g=0;do m=l+(h-l)/2,n=a(m,c,b)-k,0<n?h=m:l=m;while(1e-7
 d:A.apply($jscomp$this,d)}}(f)),f={type:f.type};return b}(),ha={css:function(a,c,d){return a.style[c]=d},attribute:function(a,c,d){return a.setAttribute(c,d)},object:function(a,c,d){return a[c]=d},transform:function(a,c,d,b,f){b[f]||(b[f]=[]);b[f].push(c+"("+d+")")}},v=[],B=0,ia=function(){function a(){B=requestAnimationFrame(c)}function c(c){var b=v.length;if(b){for(var d=0;d<b;)v[d]&&v[d].tick(c),d++;a()}else cancelAnimationFrame(B),B=0}return a}();q.version="2.2.0";q.speed=1;q.running=v;q.remove=
 function(a){a=P(a);for(var c=v.length;c--;)for(var d=v[c],b=d.animations,f=b.length;f--;)u(a,b[f].animatable.target)&&(b.splice(f,1),b.length||d.pause())};q.getValue=K;q.path=function(a,c){var d=h.str(a)?e(a)[0]:a,b=c||100;return function(a){return{el:d,property:a,totalLength:N(d)*(b/100)}}};q.setDashoffset=function(a){var c=N(a);a.setAttribute("stroke-dasharray",c);return c};q.bezier=A;q.easings=Q;q.timeline=function(a){var c=q(a);c.pause();c.duration=0;c.add=function(d){c.children.forEach(function(a){a.began=
 !0;a.completed=!0});m(d).forEach(function(b){var d=z(b,D(S,a||{}));d.targets=d.targets||a.targets;b=c.duration;var e=d.offset;d.autoplay=!1;d.direction=c.direction;d.offset=h.und(e)?b:L(e,b);c.began=!0;c.completed=!0;c.seek(d.offset);d=q(d);d.began=!0;d.completed=!0;d.duration>b&&(c.duration=d.duration);c.children.push(d)});c.seek(0);c.reset();c.autoplay&&c.restart();return c};return c};q.random=function(a,c){return Math.floor(Math.random()*(c-a+1))+a};return q});
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(2);
-module.exports = __webpack_require__(5);
-
-
-/***/ }),
-/* 2 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_morphingSVG__ = __webpack_require__(11);
-
-
-/**
- * SVG Animation
- * see ./core/morphingSVG.js for details
- */
-var svgClip = document.getElementById('js-svg-clip');
-Object(__WEBPACK_IMPORTED_MODULE_0__core_morphingSVG__["a" /* default */])(svgClip);
-
-/***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports) {
 
 var g;
@@ -157,7 +211,6 @@ module.exports = g;
 
 
 /***/ }),
-/* 4 */,
 /* 5 */
 /***/ (function(module, exports) {
 
@@ -168,32 +221,56 @@ module.exports = g;
 /* 7 */,
 /* 8 */,
 /* 9 */,
-/* 10 */,
-/* 11 */
+/* 10 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_animejs__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_animejs__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_animejs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_animejs__);
 
 
 /**
- * Animate SVG path
- * based on Anime.js ref: http://animejs.com/documentation/#morphing
+ * Scroll to section
  */
-var morphingSVG = function morphingSVG(svgPath) {
-  var svgClip = document.getElementById('js-svg-clip');
+var scrollToSection = function scrollToSection(el) {
+  var _el$getBoundingClient = el.getBoundingClientRect(),
+      top = _el$getBoundingClient.top;
+
+  var mainHeaderHeight = document.getElementById('js-main-header').scrollHeight;
+
+  var scroll = {
+    y: window.pageYOffset
+  };
 
   __WEBPACK_IMPORTED_MODULE_0_animejs___default()({
-    targets: svgPath,
-    duration: 10000,
-    easing: [0.5, 0, 0.5, 1],
-    d: [{ value: 'M 1041,450.4 C 1023,547.7 992.8,667.7 905.7,714.5 793.1,775 639,728.7 524.5,671.8 453.3,636.4 382.2,575.4 360.2,499 329.7,393 344.6,249.2 426,174.9 568.6,44.66 851.1,-8.71 1002,111.8 1091,182.7 1061,338.6 1041,450.4 Z' }, { value: 'M 1066,436 C 1051,543.8 976.5,664.5 873.6,700.1 761,739.1 636.4,655.8 529.5,603.1 441.6,559.8 325.8,520.1 293.8,427.5 263.1,338.4 294.5,213.4 368.2,154.8 520.7,33.48 790.1,23.76 952.4,131.7 1043,191.7 1081,328.8 1066,436 Z' }, { value: 'M 1066,436 C 1053,531.1 930.7,580.1 842.2,617.2 734,662.7 598.4,707.8 492.4,657.4 427.6,626.6 387.5,546.9 376.7,476 360.3,368.3 376.9,227.9 462.5,160.5 567.6,77.69 749.9,37.5 863.8,148.8 947.6,230.7 1082,320.1 1066,436 Z' }],
-    loop: true
+    targets: scroll,
+    y: top + window.pageYOffset - mainHeaderHeight,
+    duration: 850,
+    easing: 'easeInOutExpo',
+    update: function update() {
+      return window.scroll(0, scroll.y);
+    }
   });
 };
 
-/* harmony default export */ __webpack_exports__["a"] = (morphingSVG);
+var navigate = function navigate(el) {
+  el.addEventListener('click', function () {
+    var anchorSection = el.dataset.anchor;
+    scrollToSection(document.getElementById(anchorSection));
+  }, false);
+};
+
+/**
+ * Add click event to links 
+ * and attach scroll function
+ */
+var scrollNavigation = function scrollNavigation(navLinks) {
+  navLinks.forEach(function (link) {
+    navigate(link);
+  });
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (scrollNavigation);
 
 /***/ })
 /******/ ]);
