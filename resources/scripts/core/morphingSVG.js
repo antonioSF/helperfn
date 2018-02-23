@@ -7,6 +7,10 @@ import anime from 'animejs';
 const morphingSVG = (svgPath) => {
   let svgClip = document.getElementById('js-svg-clip');
 
+  /*
+   * TODO: grab the values from the other shapes in illustrator
+   * and replace string values
+   */
   anime({
     targets: svgPath,
     duration: 10000,
