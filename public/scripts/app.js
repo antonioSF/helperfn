@@ -60,37 +60,11 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(1);
-module.exports = __webpack_require__(5);
-
-
-/***/ }),
-/* 1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_animejs__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_animejs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_animejs__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_MorphingShape__ = __webpack_require__(4);
-
-
-
-/**
- * Animate SVG with MorphingShape class
- */
-var svgShape = document.getElementById('js-svg');
-new __WEBPACK_IMPORTED_MODULE_1__core_MorphingShape__["a" /* default */](svgShape);
-
-/***/ }),
-/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -132,6 +106,30 @@ function(a){a=P(a);for(var c=v.length;c--;)for(var d=v[c],b=d.animations,f=b.len
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(2);
+module.exports = __webpack_require__(5);
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_morphingSVG__ = __webpack_require__(11);
+
+
+/**
+ * SVG Animation
+ * see ./core/morphingSVG.js for details
+ */
+var svgClip = document.getElementById('js-svg-clip');
+Object(__WEBPACK_IMPORTED_MODULE_0__core_morphingSVG__["a" /* default */])(svgClip);
+
+/***/ }),
 /* 3 */
 /***/ (function(module, exports) {
 
@@ -159,91 +157,43 @@ module.exports = g;
 
 
 /***/ }),
-/* 4 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_animejs__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_animejs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_animejs__);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-
-
-/**
- * From https://davidwalsh.name/javascript-debounce-function.
- */
-function debounce(func, wait, immediate) {
-  var timeout;
-  return function () {
-    var content = this,
-        args = arguments;
-    var later = function later() {
-      timeout = null;
-      if (!immediate) func.apply(context, args);
-    };
-    var callNow = immediate && !timeout;
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-    if (callNow) func.apply(context, args);
-  };
-}
-
-/**
- * Equation of a line
- */
-var lineEq = function lineEq(y2, y1, x2, x1, currentVal) {
-  var m = (y2 - y1) / (x2 - x1);
-  var b = y1 - m * x1;
-
-  return m * currentVal + b;
-};
-
-/**
- * MorphingShape class
- * based on https://tympanus.net/Development/ShapeMorphIdeas
- */
-
-var MorphingShape = function () {
-  function MorphingShape(el) {
-    _classCallCheck(this, MorphingShape);
-
-    this.DOM = {};
-    this.DOM.el = el;
-    this.DOM.el.style.opacity = 1;
-    this.DOM.el.style.transition = 'transform 2s ease-out';
-    this.DOM.pathEl = this.DOM.el.querySelector('path');
-    this.paths = this.DOM.pathEl.getAttribute('pathdata:id').split(';');
-    this.paths.splice(this.paths.length, 0, this.DOM.pathEl.getAttribute('d'));
-    this.win = { width: window.innerWidth, height: window.innerHeight };
-    this.animate();
-  }
-
-  _createClass(MorphingShape, [{
-    key: 'animate',
-    value: function animate() {
-      __WEBPACK_IMPORTED_MODULE_0_animejs___default.a.remove(this.DOM.pathEl);
-      __WEBPACK_IMPORTED_MODULE_0_animejs___default()({
-        targets: this.DOM.pathEl,
-        duration: 10000,
-        easing: [0.5, 0, 0.5, 1],
-        d: this.paths,
-        loop: true
-      });
-    }
-  }]);
-
-  return MorphingShape;
-}();
-
-/* harmony default export */ __webpack_exports__["a"] = (MorphingShape);
-
-/***/ }),
+/* 4 */,
 /* 5 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 6 */,
+/* 7 */,
+/* 8 */,
+/* 9 */,
+/* 10 */,
+/* 11 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_animejs__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_animejs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_animejs__);
+
+
+/**
+ * Animate SVG path
+ * based on Anime.js ref: http://animejs.com/documentation/#morphing
+ */
+var morphingSVG = function morphingSVG(svgPath) {
+  var svgClip = document.getElementById('js-svg-clip');
+
+  __WEBPACK_IMPORTED_MODULE_0_animejs___default()({
+    targets: svgPath,
+    duration: 10000,
+    easing: [0.5, 0, 0.5, 1],
+    d: [{ value: 'M 1041,450.4 C 1023,547.7 992.8,667.7 905.7,714.5 793.1,775 639,728.7 524.5,671.8 453.3,636.4 382.2,575.4 360.2,499 329.7,393 344.6,249.2 426,174.9 568.6,44.66 851.1,-8.71 1002,111.8 1091,182.7 1061,338.6 1041,450.4 Z' }, { value: 'M 1066,436 C 1051,543.8 976.5,664.5 873.6,700.1 761,739.1 636.4,655.8 529.5,603.1 441.6,559.8 325.8,520.1 293.8,427.5 263.1,338.4 294.5,213.4 368.2,154.8 520.7,33.48 790.1,23.76 952.4,131.7 1043,191.7 1081,328.8 1066,436 Z' }, { value: 'M 1066,436 C 1053,531.1 930.7,580.1 842.2,617.2 734,662.7 598.4,707.8 492.4,657.4 427.6,626.6 387.5,546.9 376.7,476 360.3,368.3 376.9,227.9 462.5,160.5 567.6,77.69 749.9,37.5 863.8,148.8 947.6,230.7 1082,320.1 1066,436 Z' }],
+    loop: true
+  });
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (morphingSVG);
 
 /***/ })
 /******/ ]);

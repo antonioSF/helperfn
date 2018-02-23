@@ -1,8 +1,10 @@
-import anime from 'animejs';
-import MorphingShape from './core/MorphingShape';
+import morphingSVG from './core/morphingSVG';
 
 /**
- * Animate SVG with MorphingShape class
+ * SVG Animation
+ * see ./core/morphingSVG.js for details
  */
-const svgShape = document.getElementById('js-svg');
-new MorphingShape(svgShape);
+const svgClip = document.getElementById('js-svg-clip'); 
+morphingSVG(svgClip);
+
+
