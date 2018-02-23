@@ -6,7 +6,6 @@ import scrollNavigation from './core/scrollNavigation';
  * check if is mobile device based on media queries
  */
 const isMobile = () => window.matchMedia( "(max-width: 64rem)" ).matches;
-
 if (!isMobile()) {
   //do something for desktop
 }
